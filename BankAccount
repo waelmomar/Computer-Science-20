@@ -1,0 +1,47 @@
+public class BankAccount {
+
+	private int accountID = 1000000;
+	private double balance = 0;
+	private double withdrawalFee;
+	private String BankAccount;
+	private double AnnualIntrestRate;
+	
+	public BankAccount(String BankAccount)
+	{
+		
+	}
+	
+	public void deposit(double amount)
+	{
+		balance += amount;
+	}
+	
+	public void withdrawal(double amount)
+	{
+		balance -= amount;
+		balance -= withdrawalFee;
+	}
+	
+	public boolean isOverDrawn()
+	{
+		if (balance<0) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+	
+	public void addAnnualInterest()
+	{
+		balance += balance * (AnnualIntrestRate / 100);
+	}
+	
+	public String StringtoString()
+	{
+		return BankAccount + accountID + balance;
+	}
+}
