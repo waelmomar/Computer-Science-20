@@ -45,16 +45,23 @@ public class BankAccount {
 	
 	public void addAnnualInterest()
 	{
-		if (balance > 0) {
+		if (balance > 0) 
+		{
 			balance += balance * (annualInterestRate / 100);
 		}
 	}
 	
 	public String toString()
 	{
-		balance = Math.round(balance * 100.0) / 100.0;
-		
-		return "BankAccount " + accountID + balance;
+		double roundedBalance = Math.round(balance * 100.0) / 100.0;
+		if (balance >= 0)
+		{
+			return "BankAccount: name = '" + bankAccount + "'; balance = $" + roundedBalance;
+		}
+		else
+		{
+			return "BankAccount: name = '" + bankAccount + "'; balance = ($" + Math.abs(roundedBalance) + ")";
+		}
 	}
 	
 	public String getAccountName()
