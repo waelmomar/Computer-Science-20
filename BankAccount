@@ -1,14 +1,30 @@
 public class BankAccount {
 
-	private int accountID = 1000000;
+	private static int nextAccountID = 1000000;
 	private double balance = 0;
 	private double withdrawalFee;
-	private String BankAccount;
-	private double AnnualIntrestRate;
+	private String bankAccount;
+	private double annualInterestRate;
+	public int accountID;
+	
+	public BankAccount(String BankAccount, int balance, double withdrawalFee, double AnnualInterestRate)
+	{
+		this.accountID = nextAccountID;
+		nextAccountID++;
+		this.bankAccount = BankAccount;
+		this.balance = balance;
+		this.withdrawalFee = withdrawalFee;
+		this.annualInterestRate = AnnualInterestRate;
+	}
 	
 	public BankAccount(String BankAccount)
 	{
-		
+		this(BankAccount, 0 , 0d, 0d);
+	}
+	
+	public BankAccount(String BankAccount, int balance)
+	{
+		this(BankAccount, balance, 0d, 0d);
 	}
 	
 	public void deposit(double amount)
@@ -16,7 +32,7 @@ public class BankAccount {
 		balance += amount;
 	}
 	
-	public void withdrawal(double amount)
+	public void withdraw(double amount)
 	{
 		balance -= amount;
 		balance -= withdrawalFee;
@@ -24,24 +40,57 @@ public class BankAccount {
 	
 	public boolean isOverDrawn()
 	{
-		if (balance<0) 
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
+		return balance < 0;
 	}
 	
 	public void addAnnualInterest()
 	{
-		balance += balance * (AnnualIntrestRate / 100);
+		if (balance > 0) {
+			balance += balance * (annualInterestRate / 100);
+		}
 	}
 	
-	public String StringtoString()
+	public String toString()
 	{
-		return BankAccount + accountID + balance;
+		balance = Math.round(balance * 100.0) / 100.0;
+		
+		return "BankAccount " + accountID + balance;
+	}
+	
+	public String getAccountName()
+	{
+		return bankAccount;
+	}
+	
+	public double getBalance()
+	{
+		return balance;
+	}
+	
+	public double getWithdrawalFee()
+	{
+		return withdrawalFee;
+	}
+	
+	public double getAnnualInterestRate()
+	{
+		return annualInterestRate;
+	}
+	
+	public void setWithdrawalFee(double withdrawalFee)
+	{
+		this.withdrawalFee = withdrawalFee;
+	}
+	public void setAnnualInterestRate(double AnnualInterestRate)
+	{
+		this.annualInterestRate = AnnualInterestRate;
+	}
+	public int getAccountID()
+	{
+		return accountID;
+	}
+	public static int getNextAccountID()
+	{
+		return nextAccountID;
 	}
 }
