@@ -1,0 +1,64 @@
+public class TriangleClassifier {
+
+
+	public static String getClassification( int AngleA, int AngleB, int AngleC)
+	{
+		String triangleType = "";
+		String triangleSymmetry = "";
+	
+		
+		if (((AngleA) + (AngleB) + (AngleC)) > 180)
+		{
+			triangleType = "IN";
+		}
+		else if ((AngleA <= 0) ||(AngleB <= 0) || (AngleC <= 0) )
+		{
+			triangleType = "IN";
+		}
+		else if ((AngleA == 90) || (AngleB == 90) || (AngleC == 90))
+		{
+			triangleType = "right";
+		}
+		else if ((AngleA > 90) ||(AngleB > 90) || (AngleC > 90) )
+		{
+			triangleType = "obtuse";
+		}
+		else if (AngleA == AngleB && AngleB == AngleC && AngleA == AngleC) 
+		{
+			triangleType = "";
+		}
+		else 
+		{
+			triangleType = "acute";
+		}
+		
+		
+		if (((AngleA) + (AngleB) + (AngleC)) > 180)
+		{
+			triangleSymmetry = "VALID";
+		}
+		else if ((AngleA <= 0) ||(AngleB <= 0) || (AngleC <= 0) )
+		{
+			triangleSymmetry = "VALID";
+		}
+		else if (AngleA == AngleB && AngleB == AngleC && AngleA == AngleC) 
+		{
+			triangleSymmetry = "equilateral";
+		}
+		else if ( (AngleA == AngleB) || (AngleA == AngleC) || (AngleB == AngleC)) 
+		{
+			triangleSymmetry = " isosceles";
+		}
+		
+		else 
+		{
+			triangleSymmetry = " scalene";
+		}
+		
+		return triangleType + triangleSymmetry;
+
+	}
+
+
+}
+
