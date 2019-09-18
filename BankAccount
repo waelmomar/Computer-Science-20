@@ -53,14 +53,15 @@ public class BankAccount {
 	
 	public String toString()
 	{
-		double roundedBalance = Math.round(balance * 100.0) / 100.0;
+		
+		String roundedBalance = String.format("%.2f", Math.abs(balance));
 		if (balance >= 0)
 		{
 			return "BankAccount: name = '" + bankAccount + "'; balance = $" + roundedBalance;
 		}
 		else
 		{
-			return "BankAccount: name = '" + bankAccount + "'; balance = ($" + Math.abs(roundedBalance) + ")";
+			return "BankAccount: name = '" + bankAccount + "'; balance = ($" + roundedBalance + ")";
 		}
 	}
 	
