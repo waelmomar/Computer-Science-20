@@ -1,0 +1,29 @@
+public class SumOfNumbers {
+	
+
+	public static String getSum(int start, int end) {
+
+		String output = "";
+		int sum = 0;
+		String finalproduct = "";
+		if (start > end) {
+			return null;
+		}
+		
+		if (start == end) {
+			return start + " = " + end;
+		}
+		
+		for(int i = start; i<=end;i++) {
+			sum = sum + i;
+			output = output + i;
+			if (i < end) {
+				output = output + " + ";
+			}
+			
+		}
+		finalproduct = output + " = " + sum;
+		return finalproduct;
+	}
+
+}
