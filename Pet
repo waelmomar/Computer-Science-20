@@ -6,21 +6,26 @@ public class Pet {
 
 	public static void main(String[] args) throws Exception {
 		int min = 0;
-		int sum = 0; 
+		int winline = 0;
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		String line = reader.readLine();
+		
 		for (int b =0; b<5; b++) {
-			StringTokenizer st = new StringTokenizer(line);
+			StringTokenizer st = new StringTokenizer(reader.readLine());
 			
 			for (int i=0; i<4; i++) {
-
+				int sum = 0; 
 				int num = Integer.parseInt(st.nextToken());
 				sum = (sum + num);	
+				if (sum > min) {
+					min = Integer.max(min,sum);
+					winline = b;
+				}
+				
 			}
 		}
 		
-		min = Integer.max(min,sum);
+		System.out.print(winline + " " + min);
 		
 	}
 }
