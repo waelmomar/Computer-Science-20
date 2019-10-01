@@ -33,12 +33,12 @@ public class MakeChange {
 
 
 			int quarters = (int) (outCents / quarter);
-			double dimes = ((outCents % quarter) / dime);
-			double nickels = ((outCents % quarter) % dime);
+			int dimes = (int) ((outCents % quarter) / dime);
+			int nickels = (int) Math.round(((outCents % quarter) % dime) /nickel);
 			
 			System.out.print(" quarters:" + (quarters) + ";");
-			System.out.print(" dimes:" + Math.round(Math.floor(dimes)) + ";");
-			System.out.println(" nickels:" + Math.round(nickels/nickel));
+			System.out.print(" dimes:" + (dimes) + ";");
+			System.out.println(" nickels:" + nickels);
 
 		} catch(NumberFormatException e) {
 			
