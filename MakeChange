@@ -1,0 +1,52 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class MakeChange {
+
+	public static void main(String[] args) throws Exception {
+		
+		int toonie = 2;
+		double quarter = 0.25;
+		double dime = 0.10;
+		double nickel = 0.05;
+		
+		System.out.println("Enter a dollar amount:");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		String input = reader.readLine();
+
+		try {
+			
+			double inputAmount = Double.parseDouble(input);
+			double roundedAmount = (Math.round(inputAmount / nickel)) * nickel;
+			String split = String.valueOf(roundedAmount);
+			int indexOfDecimal = split.indexOf(".");
+
+			String toonies = split.substring(0, indexOfDecimal);
+			String cents = split.substring(indexOfDecimal);
+			
+			int outToonies = Integer.parseInt(toonies);
+			double outCents = Double.parseDouble(cents);
+			int outLoonies = (outToonies % toonie);
+			
+			System.out.print("toonies:" + (outToonies / toonie) +";");
+			System.out.print(" loonies:" + outLoonies + ";");
+
+
+			int quarters = (int) (outCents / quarter);
+			double dimes = ((outCents % quarter) / dime);
+			double nickels = ((outCents % quarter) % dime);
+			
+			System.out.print(" quarters:" + (quarters) + ";");
+			System.out.print(" dimes:" + Math.round(Math.floor(dimes)) + ";");
+			System.out.println(" nickels:" + Math.round(nickels/nickel));
+
+		} catch(NumberFormatException e) {
+			
+			System.out.println("INVALID");
+			
+		}
+		
+		reader.close();
+
+	}
+}
