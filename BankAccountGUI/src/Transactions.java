@@ -8,11 +8,9 @@ import javax.swing.border.EmptyBorder;
 
 public class Transactions extends JDialog {
 
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		try {
 			Transactions dialog = new Transactions();
@@ -23,9 +21,6 @@ public class Transactions extends JDialog {
 		}
 	}
 
-	/**
-	 * Create the dialog.
-	 */
 	public Transactions() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());

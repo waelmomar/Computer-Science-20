@@ -6,8 +6,6 @@ public class BankAccount {
 	private static int nextAccountID = 1000000;
 	private double balance = 0;
 	private double withdrawalFee;
-	private String bankAccount;
-	private String transactionName;
 	public int accountID;
 	
 	ArrayList<Transaction> transactionArray = new ArrayList<Transaction>();
@@ -16,7 +14,6 @@ public class BankAccount {
 		
 		this.accountID = nextAccountID;
 		nextAccountID++;
-		this.bankAccount = bankAccount;
 		this.balance = balance;
 		this.withdrawalFee = withdrawalFee;
 	}
@@ -34,7 +31,6 @@ public class BankAccount {
 	public void deposit(LocalDateTime localDateTime, double amount, String transactionName) {
 		
 		balance += amount;
-		this.transactionName = transactionName;
 		Transaction currentTransaction = new Transaction(localDateTime, amount, transactionName);
 		handleTransaction(currentTransaction);
 		
